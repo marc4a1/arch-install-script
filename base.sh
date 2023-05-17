@@ -9,7 +9,7 @@ timedatectl set-ntp true
 lsblk
 
 # Choose Drive to Install Arch
-echo -n "Enter drive you wish to install Arch on." 
+echo -n "Enter drive you wish to install Arch on. i.e /dev/sda. "
 read -r BLOCK_DEVICE
 
 disk=$BLOCK_DEVICE
