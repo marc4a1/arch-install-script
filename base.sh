@@ -32,11 +32,12 @@ mount $root /mnt
 swapon $swap
 
 # Install Base System
-pacstrap -K /mnt base linux linux-firmware
+pacstrap -K /mnt base linux linux-firmware grub
 
 # Generate Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
+# Install Grub
 grub-install --target=i386-pc $disk
 grub-mkconfig -o /boot/grub/grub.cfg
 
