@@ -32,7 +32,7 @@ mount $root /mnt
 swapon $swap
 
 # Install Base System
-pacstrap -K /mnt base base-devel linux linux-firmware
+pacstrap -K /mnt base linux linux-firmware
 
 # Generate Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
