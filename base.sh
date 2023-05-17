@@ -9,13 +9,14 @@ timedatectl set-ntp true
 lsblk
 
 # Choose Drive to Install Arch
-echo -n "Enter drive you wish to install Arch on."
+echo -n "Enter drive you wish to install Arch on." 
 read -r BLOCK_DEVICE
 
 disk=$BLOCK_DEVICE
 swap=${disk}1
 root=${disk}2
 
+# Remove Previous mnt and swap
 swapoff $swap
 umount -R /mnt
 
@@ -35,14 +36,17 @@ mount $root /mnt
 swapon $swap
 
 # Install Base System
-pacstrap -K /mnt base linux linux-firmware grub
+pacstrap -K /mnt base base-devel linux linux-firmware grub nano vim networkmanager
 
 # Generate Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
+# To Chroot To Root User
+chmod +x chroot.sh
 cp chroot.sh /mnt
 
 arch-chroot /mnt ./chroot.sh
 
+# Unmount and Reboot
 umount -R /mnt
-shutdown
+reboot
