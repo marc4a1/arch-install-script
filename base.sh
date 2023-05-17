@@ -16,6 +16,9 @@ disk=$BLOCK_DEVICE
 swap=${disk}1
 root=${disk}2
 
+swapoff $swap
+umount -R /mnt
+
 # Create Disk Partitions
 set -xe
 parted -s $disk mklabel msdos
