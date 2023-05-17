@@ -41,3 +41,6 @@ pacstrap -K /mnt base base-devel linux linux-headers linux-firmware git vim nano
 
 # Generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
+
+grub-install --target=i386-pc $disk
+
