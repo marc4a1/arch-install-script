@@ -36,7 +36,7 @@ mount $root /mnt
 swapon $swap
 
 # Install Base System
-pacstrap -K /mnt base base-devel linux linux-firmware grub nano vim networkmanager
+pacstrap -K /mnt base base-devel linux linux-firmware grub nano vim networkmanager ranger
 
 # Generate Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
