@@ -37,11 +37,13 @@ pacstrap -K /mnt base linux linux-firmware grub
 # Generate Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-# Install Grub
-grub-install --target=i386-pc $disk
-grub-mkconfig -o /boot/grub/grub.cfg
+arch-chroot /mnt sh -c 'set -xe;
 
-echo root:1234 | chpasswd
+# Install Grub
+grub-install --target=i386-pc $disk;
+grub-mkconfig -o /boot/grub/grub.cfg;
+
+echo root:1234 | chpasswd;
 
 umount -R /mnt
 shutdown now
