@@ -37,9 +37,9 @@ pacstrap -K /mnt base linux linux-firmware grub
 # Generate Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-cp ./*.sh /mnt/home
+cp chroot.sh /mnt
 
-arch-chroot /mnt /home/./chroot.sh
+arch-chroot /mnt ./chroot.sh
 
 umount -R /mnt
 shutdown
