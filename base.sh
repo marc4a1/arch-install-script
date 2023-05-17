@@ -9,7 +9,7 @@ timedatectl set-ntp true
 lsblk
 
 # Choose Drive to Install Arch
-echo -n "Enter drive you wish to install Arch on. i.e /dev/sda. "
+echo -n "Enter drive you wish to install Arch on. (i.e /dev/sda) "
 read -r BLOCK_DEVICE
 
 disk=$BLOCK_DEVICE
@@ -36,7 +36,7 @@ mount $root /mnt
 swapon $swap
 
 # Install Base System
-pacstrap -K /mnt base base-devel linux linux-firmware grub nano vim networkmanager ranger
+pacstrap -K /mnt base base-devel linux linux-firmware grub nano vim networkmanager
 
 # Generate Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
