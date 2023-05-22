@@ -36,16 +36,16 @@ mount $root /mnt
 swapon $swap
 
 # Install Base System
-pacstrap -K /mnt base base-devel linux linux-firmware grub nano vim networkmanager
+pacstrap -K /mnt base base-devel linux linux-firmware nano vim
 
 # Generate Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # To Chroot To Root User
-chmod +x chroot.sh
-cp chroot.sh /mnt
+chmod +x arch-chroot.sh
+cp arch-chroot.sh /mnt
 
-arch-chroot /mnt ./chroot.sh
+arch-chroot /mnt ./arch-chroot.sh
 
 # Unmount and Reboot
 umount -R /mnt
