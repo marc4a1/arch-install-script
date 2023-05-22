@@ -1,1 +1,13 @@
 #!/bin/bash
+
+# Set Timezone
+ln -sf /usr/share/zoneinfo/$region/$city /etc/localtime
+hwclock --systohc
+
+# Set Locale
+/etc/locale.gen
+locale-gen
+
+touch /etc/locale.conf
+echo LANG=en_US.UTF-8 >> /etc/locale.conf
+
