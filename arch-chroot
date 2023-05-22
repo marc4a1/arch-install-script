@@ -33,3 +33,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 systemctl enable fstrim.timer
 
+# Default User
+useradd -m $username
+echo $username:$password | chpasswd
