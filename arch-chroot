@@ -1,11 +1,15 @@
 #!/bin/bash
 
-# Enter Host Details and User Details.
+# Enter Host and User Details.
+read TIMEZONE
+read HOSTNAME
+read USERNAME
+read PASSWORD
 
 TIMEZONE=$timezone
+HOSTNAME=$hostname
 USERNAME=$username
 PASSWORD=$password
-
 
 # Set Timezone
 ln -sf /usr/share/zoneinfo/$timezone /etc/localtime
