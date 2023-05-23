@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source user.cfg
+
 # Enter Host and User Details.
 read TIMEZONE
 read HOSTNAME
