@@ -2,8 +2,7 @@
 
 clear
 
-source config.conf
-
+rm config.conf
 touch config.conf
 
 # Update System Clock
