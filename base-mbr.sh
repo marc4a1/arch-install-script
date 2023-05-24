@@ -54,8 +54,6 @@ cp arch-chroot.sh config.conf /mnt
 
 arch-chroot /mnt ./arch-chroot.sh
 
-rm arch-chroot.sh config.conf /mnt
-
 # Unmount and Reboot
 umount -R /mnt
 reboot
