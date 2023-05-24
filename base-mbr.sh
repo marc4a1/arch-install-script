@@ -5,6 +5,8 @@ clear
 rm config.conf
 touch config.conf
 
+sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+
 # Update System Clock
 timedatectl set-ntp true
 
