@@ -41,6 +41,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot/efi --recheck
 # grub-mkconfig -o /boot/grub/grub.cfg
 
+# Install Packages
+pacman -Sy
+pacman -S --noconfirm networkmanager
+
 # Enable System
 systemctl enable NetworkManager
 # systemctl enable fstrim.timer
