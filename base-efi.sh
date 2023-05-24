@@ -22,10 +22,11 @@ umount -R /mnt
 
 # Create Disk Partitions
 set -xe
-parted -s $disk mklabel msdos
-parted -sa optimal $disk mkpart primary linux-swap 0% 2G
-parted -sa optimal $disk mkpart primary ext4 2G 100%
-parted -s $disk set 1 boot on
+parted -s $disk mklabel gpt
+parted -sa optimal $disk mkpart primary fat32
+parted -sa optimal $disk mkpart primary linux-swap
+parted -sa optimal $disk mkpart primary ext4
+parted -s $disk set 1 esp on
 
 # Format Partitions
 mkswap -f $swap
