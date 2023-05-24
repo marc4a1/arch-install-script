@@ -2,6 +2,10 @@
 
 clear
 
+source config.conf
+
+touch config.conf
+
 # Update System Clock
 timedatectl set-ntp true
 
@@ -11,6 +15,8 @@ lsblk
 # Choose Drive to Install Arch
 echo -n "Enter drive you wish to install Arch on. (i.e /dev/sda) "
 read -r BLOCK_DEVICE
+
+echo disk=$BLOCK_DEVICE >> config.conf
 
 disk=$BLOCK_DEVICE
 swap=${disk}1
@@ -43,7 +49,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 # To Chroot To Root User
 chmod +x arch-chroot.sh
-cp arch-chroot.sh /mnt
+cp arch-chroot.sh config.conf /mnt
 
 arch-chroot /mnt ./arch-chroot.sh
 
