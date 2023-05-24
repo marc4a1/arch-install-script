@@ -3,28 +3,23 @@
 # Enter Host and User Details.
 
 echo -n "Enter Timezone (i.e. America/Los_Angeles): "
-read TIMEZONE
+read timezone
 
 echo -n "Enter Hostname: "
-read HOSTNAME
+read hostname
 
 echo -n "Enter Username: "
-read USERNAME
+read username
 
 echo -n "Enter Password: "
-read PASSWORD
-
-timezone=$TIMEZONE
-hostname=$HOSTNAME
-username=$USERNAME
-password=$PASSWORD
+read password
 
 # Set Timezone
 ln -sf /usr/share/zoneinfo/$timezone /etc/localtime
 hwclock --systohc
 
 # Set Locale
-sed -i 's/^#en_US.UTF-8/en_US.UTF-8/g' /etc/locale.gen
+sed -i 's/^#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen
 locale-gen
 
 touch /etc/locale.conf
