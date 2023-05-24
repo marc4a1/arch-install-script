@@ -54,3 +54,5 @@ systemctl enable NetworkManager
 # Default User
 useradd -m $username
 echo $username:$password | chpasswd
+
+rm arch-chroot.sh config.conf
