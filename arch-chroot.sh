@@ -33,6 +33,7 @@ echo "::1.      localhost" >> /etc/hosts
 echo "127.0.1.1 $hostname.localdomain $hostname" >> /etc/hosts
 
 # Install Grub Bootloader
+pacman -Sy
 pacman -S --noconfirm grub
 grub-install --target=i386-pc $disk
 grub-mkconfig -o /boot/grub/grub.cfg
