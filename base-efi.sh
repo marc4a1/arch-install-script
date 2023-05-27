@@ -18,10 +18,12 @@ echo -n "Enter drive you wish to install Arch on. (i.e /dev/sda) "
 read -r BLOCK_DEVICE
 
 echo disk=$BLOCK_DEVICE >> config.conf
+echo boot=${disk}1 >> config.conf
 
 disk=$BLOCK_DEVICE
-swap=${disk}1
-root=${disk}2
+boot=${disk}1
+swap=${disk}2
+root=${disk}3
 
 # Remove Previous mnt and swap
 swapoff $swap
@@ -30,12 +32,13 @@ umount -R /mnt
 # Create Disk Partitions
 set -xe
 parted -s $disk mklabel gpt
-parted -sa optimal $disk mkpart primary fat32
-parted -sa optimal $disk mkpart primary linux-swap
-parted -sa optimal $disk mkpart primary ext4
+parted -sa optimal $disk mkpart primary fat32 0% 1024M
+parted -sa optimal $disk mkpart primary linux-swap 1024M 2G
+parted -sa optimal $disk mkpart primary ext4 2G 100%
 parted -s $disk set 1 esp on
 
 # Format Partitions
+mkfs.fat -F32 $boot
 mkswap -f $swap
 mkfs.ext4 -F $root
 
