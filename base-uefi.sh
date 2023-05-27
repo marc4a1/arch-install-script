@@ -42,10 +42,9 @@ mkswap -f $swap
 mkfs.ext4 -F $root
 
 # Mount Partitions
-mkdir /mnt/boot
 mount $root /mnt
 swapon $swap
-mount $boot /mnt/boot
+mount --mkdir $boot /mnt/boot
 
 # Install Base System
 pacstrap -K /mnt base base-devel linux linux-firmware nano vim
