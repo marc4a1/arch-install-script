@@ -36,7 +36,7 @@ echo "127.0.1.1 $hostname.localdomain $hostname" >> /etc/hosts
 mkdir /boot/efi
 # mount ${disk}1
 pacman -Sy
-pacman -S --noconfirm grub efibootmgr dosfstools mtools gptfdisk fatresize
+pacman -S --noconfirm --needed grub efibootmgr dosfstools mtools gptfdisk fatresize
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 
