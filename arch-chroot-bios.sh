@@ -40,7 +40,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # Install Packages
 pacman -Sy
-pacman -S --noconfirm networkmanager
+pacman -S --noconfirm networkmanager sudo
 
 # Enable System
 systemctl enable NetworkManager
@@ -49,5 +49,8 @@ systemctl enable NetworkManager
 # Default User
 useradd -m $username
 echo $username:$password | chpasswd
+usermod -aG wheel,audio,video,storage $username
+
+sed -i 's/^#%wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g' /etc/sudoers
 
 rm arch-chroot.sh config.conf
