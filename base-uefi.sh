@@ -18,7 +18,6 @@ echo -n "Enter drive you wish to install Arch on. (i.e /dev/sda) "
 read -r BLOCK_DEVICE
 
 echo disk=$BLOCK_DEVICE >> config.conf
-echo boot=${disk}1 >> config.conf
 
 disk=$BLOCK_DEVICE
 boot=${disk}1
