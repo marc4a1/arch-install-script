@@ -49,11 +49,13 @@ pacstrap -K /mnt base base-devel linux linux-firmware nano vim
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # To Chroot To Root User
-chmod +x arch-chroot.sh
-cp arch-chroot.sh config.conf /mnt
+chmod +x arch-chroot-bios.sh
+cp arch-chroot-bios.sh config.conf /mnt
 
-arch-chroot /mnt ./arch-chroot.sh
+arch-chroot /mnt ./arch-chroot-bios.sh
 
 # Unmount and Reboot
 umount -R /mnt
+echo "Remove install media. System will reboot in 10 seconds."
+sleep 10
 reboot
