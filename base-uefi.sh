@@ -42,6 +42,7 @@ mkswap -f $swap
 mkfs.ext4 -F $root
 
 # Mount Partitions
+mkdir /mnt/boot
 mount $root /mnt
 swapon $swap
 mount $boot /mnt/boot
