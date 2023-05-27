@@ -2,6 +2,8 @@
 
 source config.conf
 
+sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+
 # Enter Host and User Details.
 echo -n "Enter Timezone (i.e. America/Los_Angeles): "
 read timezone
