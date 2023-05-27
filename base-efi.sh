@@ -2,6 +2,11 @@
 
 clear
 
+rm config.conf
+touch config.conf
+
+sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+
 # Update System Clock
 timedatectl set-ntp true
 
@@ -11,6 +16,8 @@ lsblk
 # Choose Drive to Install Arch
 echo -n "Enter drive you wish to install Arch on. (i.e /dev/sda) "
 read -r BLOCK_DEVICE
+
+echo disk=$BLOCK_DEVICE >> config.conf
 
 disk=$BLOCK_DEVICE
 swap=${disk}1
@@ -43,11 +50,13 @@ pacstrap -K /mnt base base-devel linux linux-firmware nano vim
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # To Chroot To Root User
-chmod +x arch-chroot.sh
-cp arch-chroot.sh /mnt
+chmod +x arch-chroot-uefi.sh
+cp arch-chroot-uefi.sh config.conf /mnt
 
-arch-chroot /mnt ./arch-chroot.sh
+arch-chroot /mnt ./arch-chroot-uefi.sh
 
 # Unmount and Reboot
 umount -R /mnt
+echo "Remove install media. System will reboot in 10 seconds."
+sleep 10
 reboot
