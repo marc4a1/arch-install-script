@@ -38,11 +38,6 @@ pacman -S --noconfirm grub
 grub-install --target=i386-pc $disk
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# Install EFI Bootloader
-# pacman -S grub efibootmgr dosfstools mtools gptfdisk fatresize
-# grub-install --target=x86_64-efi --bootloader-id=grub_uefi --efi-directory=/boot/efi --recheck
-# grub-mkconfig -o /boot/grub/grub.cfg
-
 # Install Packages
 pacman -Sy
 pacman -S --noconfirm networkmanager
