@@ -3,7 +3,7 @@
 source config.conf
 
 # Parallel Downloads
-#sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 
 # Enter Host and User Details.
 echo -n "Enter Timezone (i.e. America/Los_Angeles): "
@@ -43,8 +43,8 @@ mkdir /boot/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Install Packages
-#pacman -Sy
-#pacman -S --noconfirm networkmanager sudo
+pacman -Sy
+pacman -S --noconfirm networkmanager sudo
 
 # Enable System
 systemctl enable NetworkManager
