@@ -35,7 +35,7 @@ echo "::1.      localhost" >> /etc/hosts
 echo "127.0.1.1 $hostname.localdomain $hostname" >> /etc/hosts
 
 # Install EFI Bootloader
-mkdir /boot/efi
+# mkdir /boot/efi
 # mount ${disk}1 /boot/efi
 pacman -Sy
 pacman -S --noconfirm --needed grub efibootmgr dosfstools mtools gptfdisk fatresize
