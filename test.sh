@@ -53,15 +53,7 @@ pacstrap -K /mnt base base-devel linux linux-firmware nano vim
 # Generate Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-# To Chroot To Root User
-chmod +x arch-chroot-uefi.sh
-cp arch-chroot-uefi.sh config.conf /mnt
-
-arch-chroot /mnt ./arch-chroot-uefi.sh
-
-#!/bin/bash
-
-source config.conf
+arch-chroot /mnt
 
 # Parallel Downloads
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
