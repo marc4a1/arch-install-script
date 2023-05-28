@@ -45,7 +45,7 @@ mkfs.ext4 -F $root
 mount $root /mnt
 swapon $swap
 mkdir -p /mnt/boot/efi
-mount $boot /mnt/boot
+mount $boot /mnt/boot/efi
 
 # Install Base System
 pacstrap -K /mnt base base-devel linux linux-firmware nano vim
