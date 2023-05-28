@@ -2,7 +2,8 @@
 
 source config.conf
 
-# sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+# Parallel Downloads
+#sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 
 # Enter Host and User Details.
 echo -n "Enter Timezone (i.e. America/Los_Angeles): "
@@ -35,16 +36,15 @@ echo "::1.      localhost" >> /etc/hosts
 echo "127.0.1.1 $hostname.localdomain $hostname" >> /etc/hosts
 
 # Install EFI Bootloader
-# mkdir /boot/efi
-# mount ${disk}1 /boot/efi
 pacman -Sy
-pacman -S --noconfirm --needed grub efibootmgr dosfstools mtools gptfdisk fatresize
+pacman -S --noconfirm --needed grub efibootmgr
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
+mkdir /boot/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Install Packages
-pacman -Sy
-pacman -S --noconfirm networkmanager sudo
+#pacman -Sy
+#pacman -S --noconfirm networkmanager sudo
 
 # Enable System
 systemctl enable NetworkManager
