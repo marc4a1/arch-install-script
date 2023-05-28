@@ -55,6 +55,6 @@ useradd -m $username
 echo $username:$password | chpasswd
 usermod -aG wheel,audio,video,storage $username
 
-sed -i 's/^#%wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g' /etc/sudoers
+sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g' /etc/sudoers
 
 rm arch-chroot-uefi.sh config.conf
